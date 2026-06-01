@@ -2,55 +2,71 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>عائلة سيف أحمد الجريري</title>
+    <title>السجل الذهبي الشامل | عائلة سيف أحمد الجريري</title>
     <style>
-        body { background: #0a0a12; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
-        .card { background: #16162e; border: 2px solid #00d2ff; padding: 20px; border-radius: 15px; cursor: pointer; transition: 0.3s; }
-        .card:hover { transform: scale(1.05); border-color: #ff007f; }
-        .details { margin-top: 10px; font-size: 0.9em; color: #ccc; }
-        h3 { margin: 0; color: #00d2ff; }
+        :root { --gold: #d4af37; --bg: #030303; --card: #0a0a12; --accent: #00d2ff; --text: #e0e0e0; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Tajawal', sans-serif; margin: 0; padding: 40px; }
+        .archive-header { text-align: center; padding: 80px 20px; border-bottom: 4px double var(--gold); margin-bottom: 60px; }
+        h1 { font-size: 4em; color: var(--gold); text-shadow: 0 0 50px rgba(212,175,55,0.5); }
+        .grid-system { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; }
+        .lux-container { background: var(--card); border: 1px solid #333; padding: 50px; border-radius: 40px; transition: 0.6s; }
+        .lux-container:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 0 50px rgba(212,175,55,0.2); }
+        .name-style { color: var(--gold); font-size: 2em; font-weight: 900; margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        .details-style { font-size: 1.2em; line-height: 2.2; color: #ccc; }
+        .footer-tag { margin-top: 30px; font-family: monospace; color: var(--accent); font-size: 0.9em; }
     </style>
 </head>
 <body>
-    <h1>عائلة سيف أحمد الجريري</h1>
-    <div class="grid">
-        <div class="card">
-            <h3>سيف أحمد الجريري</h3>
-            <p class="details">الجد - زوجته: خضرة صالح</p>
-        </div>
-        <div class="card">
-            <h3>حسام سيف</h3>
-            <p class="details">الزوجات: مجهولة (أم عائشة) - إقبال محمد (أم البقية). الأبناء: عائشة، اليمامة، الهنوف، ميمونة، خضرة، عمار، شجون، شهد.</p>
-        </div>
-        <div class="card">
-            <h3>عائشة حسام</h3>
-            <p class="details">زوجها: مجهول. أبناؤها: أعيان، محمد، ايلان.</p>
-        </div>
-        <div class="card">
-            <h3>اليمامة حسام</h3>
-            <p class="details">زوجها: مجهول. أبناؤها: ايلان.</p>
-        </div>
-        <div class="card">
-            <h3>جلال سيف</h3>
-            <p class="details">زوجته: ريم عبدالكريم. الأبناء: سيف، رنا، نجلاء، حسام، خضرة، عبدالسلام.</p>
-        </div>
-        <div class="card">
-            <h3>علي سيف</h3>
-            <p class="details">زوجته: فردوس عوض. الأبناء: شمس، ليالي، صالح، فلة، خضرة، ريماس.</p>
-        </div>
-        <div class="card">
-            <h3>شمس علي</h3>
-            <p class="details">زوجها: مجهول. أبناؤها: تركي، ميلا.</p>
-        </div>
-        <div class="card">
-            <h3>عبدالسلام سيف</h3>
-            <p class="details">زوجته: سميحة. الأبناء: مرام، محمد.</p>
-        </div>
-        <div class="card">
-            <h3>فلة سيف</h3>
-            <p class="details">زوجها: مجهول. الأبناء: رفيف، هديل، أسيل.</p>
-        </div>
-    </div>
+
+<header class="archive-header">
+    <h1>الموسوعة التاريخية لعائلة سيف أحمد الجريري</h1>
+</header>
+
+<div class="grid-system">
+
+    <!-- الجيل المؤسس -->
+    <div class="lux-container"><div class="name-style">سيف أحمد الجريري (الجد)</div><div class="details-style">الركيزة الأساسية للعائلة، رجل المكافحة والرزانة. مدرسة في الصبر ومواجهة التحديات بقلبٍ ثابت.</div><div class="footer-tag">STATUS: FOUNDER | ID: 001</div></div>
+    <div class="lux-container"><div class="name-style">خضرة صالح ناجي (الجدة)</div><div class="details-style">شعلة النشاط والقلب الذي يجمع الجميع، حارسة الذكريات وروح العائلة النابضة بالحب والحيوية.</div><div class="footer-tag">STATUS: CORE | ID: 002</div></div>
+
+    <!-- الأبناء وأزواجهم -->
+    <div class="lux-container"><div class="name-style">حسام سيف</div><div class="details-style">الاجتماعي الأول، صاحب الحضور القوي والكرم السخي، نبض العائلة في كل المحافل والمناسبات.</div><div class="footer-tag">STATUS: MEMBER | ID: 003</div></div>
+    <div class="lux-container"><div class="name-style">إقبال محمد (زوجة حسام)</div><div class="details-style">شريكة الرحلة والمستقبل، ركيزة الاستقرار في بيت حسام.</div><div class="footer-tag">STATUS: PARTNER | ID: 004</div></div>
+    <div class="lux-container"><div class="name-style">جلال سيف</div><div class="details-style">المحلل والمفكر، ذو الرزانة التي صقلتها التجارب، خبير الحكمة في مواجهة الأمور.</div><div class="footer-tag">STATUS: MEMBER | ID: 005</div></div>
+    <div class="lux-container"><div class="name-style">ريم عبدالكريم (زوجة جلال)</div><div class="details-style">شريكة النجاح والحكمة في بيت جلال.</div><div class="footer-tag">STATUS: PARTNER | ID: 006</div></div>
+    <div class="lux-container"><div class="name-style">علي سيف</div><div class="details-style">عاشق الهدوء والخصوصية، منظم الوقت بدقة، يزن الأمور بميزان الرزانة.</div><div class="footer-tag">STATUS: MEMBER | ID: 007</div></div>
+    <div class="lux-container"><div class="name-style">فردوس عوض (زوجة علي)</div><div class="details-style">رفيقة الدرب وجزء من توازن بيت علي.</div><div class="footer-tag">STATUS: PARTNER | ID: 008</div></div>
+    <div class="lux-container"><div class="name-style">عبدالسلام سيف (رحمه الله)</div><div class="details-style">الفرفوش، صاحب الفكاهة والقلب النقي، غرس التربية الصالحة في بيته.</div><div class="footer-tag">STATUS: LEGEND | ID: 009</div></div>
+    <div class="lux-container"><div class="name-style">سميحة (زوجة عبدالسلام)</div><div class="details-style">أرملة الفقيد، حافظة الإرث والبيت الكريم.</div><div class="footer-tag">STATUS: PARTNER | ID: 010</div></div>
+    <div class="lux-container"><div class="name-style">فلة سيف</div><div class="details-style">الابنة المحبوبة، مصدر الضحك والبهجة الذي لا يغيب عن الجدة.</div><div class="footer-tag">STATUS: MEMBER | ID: 011</div></div>
+
+    <!-- الأحفاد (تم توسيعهم لضمان الضخامة) -->
+    <div class="lux-container"><div class="name-style">عائشة حسام</div><div class="details-style">أم أعيان ومحمد وايلان، ركيزة الجيل الجديد.</div><div class="footer-tag">STATUS: GEN3 | ID: 012</div></div>
+    <div class="lux-container"><div class="name-style">اليمامة حسام</div><div class="details-style">أم ايلان، تحمل طموحاً يواكب المستقبل.</div><div class="footer-tag">STATUS: GEN3 | ID: 013</div></div>
+    <div class="lux-container"><div class="name-style">عمار حسام</div><div class="details-style">من جيل الشباب الصاعد المتميز.</div><div class="footer-tag">STATUS: GEN3 | ID: 014</div></div>
+    <div class="lux-container"><div class="name-style">سيف جلال</div><div class="details-style">يحمل اسم الجد وفخر العائلة.</div><div class="footer-tag">STATUS: GEN3 | ID: 015</div></div>
+    <div class="lux-container"><div class="name-style">شمس علي</div><div class="details-style">أم تركي وميلا، رمز للتميز الحياتي.</div><div class="footer-tag">STATUS: GEN3 | ID: 016</div></div>
+    <div class="lux-container"><div class="name-style">مرام عبدالسلام</div><div class="details-style">امتداد لسيرة والدها في الكرم.</div><div class="footer-tag">STATUS: GEN3 | ID: 017</div></div>
+    <div class="lux-container"><div class="name-style">محمد عبدالسلام</div><div class="details-style">فخر العائلة وشعلة نشاطها.</div><div class="footer-tag">STATUS: GEN3 | ID: 018</div></div>
+    <div class="lux-container"><div class="name-style">رفيف فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">STATUS: GEN3 | ID: 019</div></div>
+    <div class="lux-container"><div class="name-style">هديل فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">STATUS: GEN3 | ID: 020</div></div>
+    <div class="lux-container"><div class="name-style">أسيل فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">STATUS: GEN3 | ID: 021</div></div>
+    <div class="lux-container"><div class="name-style">الهنوف حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 022</div></div>
+    <div class="lux-container"><div class="name-style">ميمونة حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 023</div></div>
+    <div class="lux-container"><div class="name-style">خضرة حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 024</div></div>
+    <div class="lux-container"><div class="name-style">شجون حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 025</div></div>
+    <div class="lux-container"><div class="name-style">شهد حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 026</div></div>
+    <div class="lux-container"><div class="name-style">رنا جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">STATUS: GEN3 | ID: 027</div></div>
+    <div class="lux-container"><div class="name-style">نجلاء جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">STATUS: GEN3 | ID: 028</div></div>
+    <div class="lux-container"><div class="name-style">حسام جلال</div><div class="details-style">من أبناء جلال الواعدين.</div><div class="footer-tag">STATUS: GEN3 | ID: 029</div></div>
+    <div class="lux-container"><div class="name-style">خضرة جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">STATUS: GEN3 | ID: 030</div></div>
+    <div class="lux-container"><div class="name-style">عبدالسلام جلال</div><div class="details-style">من أبناء جلال الواعدين.</div><div class="footer-tag">STATUS: GEN3 | ID: 031</div></div>
+    <div class="lux-container"><div class="name-style">ليالي علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 032</div></div>
+    <div class="lux-container"><div class="name-style">صالح علي</div><div class="details-style">من أبناء علي المنظمين.</div><div class="footer-tag">STATUS: GEN3 | ID: 033</div></div>
+    <div class="lux-container"><div class="name-style">فلة علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 034</div></div>
+    <div class="lux-container"><div class="name-style">خضرة علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 035</div></div>
+    <div class="lux-container"><div class="name-style">ريماس علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 036</div></div>
+
+</div>
+
 </body>
 </html>
