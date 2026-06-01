@@ -3,51 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>شجرة عائلة سيف أحمد الجريري</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        body { background: #0a0a12; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
-        .card { background: #16162e; border: 2px solid #00d2ff; padding: 15px; border-radius: 15px; cursor: pointer; transition: 0.3s; }
-        .card:hover { transform: scale(1.05); box-shadow: 0 0 15px #00d2ff; }
-        .card.active { position: fixed; top: 5%; left: 5%; width: 90%; height: 90%; background: #1a1a2e; z-index: 100; cursor: default; }
-        .hidden { display: none; }
-        h2 { color: #ff007f; }
+        body { background: #050505; color: #fff; font-family: sans-serif; overflow: auto; }
+        .node circle { fill: #00d2ff; stroke: #fff; stroke-width: 2px; }
+        .node text { font: 12px sans-serif; fill: #fff; font-weight: bold; }
+        .link { fill: none; stroke: #555; stroke-width: 2px; }
     </style>
 </head>
 <body>
-    <h1>شجرة عائلة سيف أحمد الجريري</h1>
-    <div class="grid" id="container">
-        <!-- الجد -->
-        <div class="card" onclick="openCard(this)"><h3>سيف أحمد</h3><p>الجد المؤسس</p></div>
-        <!-- أبناء حسام -->
-        <div class="card" onclick="openCard(this)"><h3>عائشة حسام</h3><p>ابنة حسام</p></div>
-        <div class="card" onclick="openCard(this)"><h3>أعيان حسام</h3><p>ابنة حسام</p></div>
-        <div class="card" onclick="openCard(this)"><h3>محمد حسام</h3><p>ابن حسام</p></div>
-        <div class="card" onclick="openCard(this)"><h3>إيلان حسام</h3><p>ابن حسام</p></div>
-        <!-- أبناء جلال -->
-        <div class="card" onclick="openCard(this)"><h3>سيف جلال</h3><p>ابن جلال</p></div>
-        <div class="card" onclick="openCard(this)"><h3>رنا جلال</h3><p>ابنة جلال</p></div>
-        <div class="card" onclick="openCard(this)"><h3>نجلاء جلال</h3><p>ابنة جلال</p></div>
-        <!-- أبناء علي -->
-        <div class="card" onclick="openCard(this)"><h3>شمس علي</h3><p>ابنة علي</p></div>
-        <div class="card" onclick="openCard(this)"><h3>ليالي علي</h3><p>ابنة علي</p></div>
-        <div class="card" onclick="openCard(this)"><h3>صالح علي</h3><p>ابن علي</p></div>
-        <!-- أبناء عبدالسلام -->
-        <div class="card" onclick="openCard(this)"><h3>مرام عبدالسلام</h3><p>ابنة عبدالسلام</p></div>
-        <div class="card" onclick="openCard(this)"><h3>محمد عبدالسلام</h3><p>ابن عبدالسلام</p></div>
-        <!-- أبناء فلة -->
-        <div class="card" onclick="openCard(this)"><h3>رفيف فلة</h3><p>ابنة فلة</p></div>
-        <div class="card" onclick="openCard(this)"><h3>هديل فلة</h3><p>ابنة فلة</p></div>
-    </div>
-    <button id="closeBtn" class="hidden" onclick="location.reload()" style="position:fixed; bottom:20px; right:20px; padding:15px; background:#ff007f; border:none; color:white; border-radius:10px;">إغلاق والعودة</button>
+    <h1 style="text-align:center;">شجرة عائلة سيف أحمد الجريري</h1>
+    <svg id="tree" width="4000" height="2000"></svg>
 
     <script>
-        function openCard(el) {
-            document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-            el.classList.remove('hidden');
-            el.classList.add('active');
-            el.innerHTML += '<div style="margin-top:20px; font-size:1.2em;">هذه بطاقة تعريفية خاصة بـ ' + el.querySelector('h3').innerText + '</div>';
-            document.getElementById('closeBtn').classList.remove('hidden');
-        }
+        const data = {
+            name: "سيف أحمد الجريري",
+            children: [
+                { name: "حسام سيف", children: [
+                    { name: "الزوجة الأولى (مجهولة)", children: [
+                        { name: "عائشة (متزوجة)", children: [{name: "أعيان"}, {name: "محمد"}, {name: "ايلان"}] }
+                    ]},
+                    { name: "الزوجة الثانية: إقبال محمد", children: [
+                        { name: "اليمامة (متزوجة)", children: [{name: "ايلان"}] },
+                        { name: "الهنوف"}, { name: "ميمونة"}, { name: "خضرة"}, { name: "عمار"}, { name: "شجون"}, { name: "شهد"}
+                    ]}
+                ]},
+                { name: "جلال سيف", children: [{name: "سيف"}, {name: "رنا"}, {name: "نجلاء"}, {name: "حسام"}, {name: "خضرة"}, {name: "عبدالسلام"}]},
+                { name: "علي سيف", children: [
+                    { name: "شمس (متزوجة)", children: [{name: "تركي"}, {name: "ميلا"}]},
+                    {name: "ليالي"}, {name: "صالح"}, {name: "فلة"}, {name: "خضرة"}, {name: "ريماس"}
+                ]},
+                { name: "عبدالسلام سيف (الزوجة سميحة)", children: [{name: "مرام"}, {name: "محمد"}]},
+                { name: "فلة سيف (الزوج: مجهول)", children: [{name: "رفيف"}, {name: "هديل"}, {name: "أسيل"}]}
+            ]
+        };
+
+        const svg = d3.select("#tree"), width = 4000, height = 2000;
+        const root = d3.hierarchy(data);
+        d3.tree().size([height - 200, width - 1000])(root);
+
+        svg.selectAll(".link").data(root.links()).enter().append("path").attr("class", "link")
+            .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
+
+        const node = svg.selectAll(".node").data(root.descendants()).enter().append("g")
+            .attr("transform", d => "translate(" + d.y + "," + d.x + ")");
+
+        node.append("circle").attr("r", 5);
+        node.append("text").attr("dy", 5).attr("x", 10).text(d => d.data.name);
     </script>
 </body>
 </html>
