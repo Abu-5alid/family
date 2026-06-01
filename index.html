@@ -2,47 +2,59 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>عائلة سيف أحمد الجريري</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #050505; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; }
+        .card { width: 150px; padding: 15px; background: #1a1a1a; border: 2px solid #333; border-radius: 15px; cursor: pointer; text-align: center; transition: 0.4s; }
+        .card:hover { border-color: #00d2ff; transform: scale(1.05); }
+        .card.active { width: 80%; max-width: 600px; cursor: default; border-color: #ff007f; background: #222; }
+        .hidden { display: none; }
+        .icon { font-size: 50px; margin-bottom: 10px; }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>عائلة سيف أحمد الجريري</h1>
-        <p>رحلة الإرث والترابط</p>
-    </header>
-
-    <main class="container">
-        <div class="card">
-            <h3>الجد والجدة</h3>
-            <p>سيف أحمد (يرحمه الله) & خضرة صالح</p>
+    <h1>شجرة عائلة سيف أحمد الجريري</h1>
+    <div class="container" id="grid">
+        <div class="card" onclick="show(this)">
+            <div class="icon">👴</div>
+            <h3>سيف أحمد</h3>
+            <p class="details hidden">الجد المؤسس، رحمه الله. كان رمزاً للكرم والعطاء، وله مكانة كبيرة في قلوب الجميع.</p>
         </div>
-
-        <div class="card">
-            <h3>حسام سيف أحمد</h3>
-            <p>من المجهولة: عائشة، أعيان، محمد، إيلان<br>من إقبال: اليمامة، الهنوف، ميمونة، خضرة، عمار، شجون، شهد</p>
+        <div class="card" onclick="show(this)">
+            <div class="icon">👨</div>
+            <h3>حسام سيف</h3>
+            <p class="details hidden">الأبناء: عائشة، أعيان، محمد، إيلان، اليمامة، الهنوف، ميمونة، خضرة، عمار، شجون، شهد.</p>
         </div>
-
-        <div class="card">
-            <h3>جلال سيف أحمد</h3>
-            <p>الزوجة: ريم عبدالكريم<br>الأبناء: سيف، رنا، نجلاء، حسام، خضرة، عبدالسلام</p>
+        <div class="card" onclick="show(this)">
+            <div class="icon">👨</div>
+            <h3>جلال سيف</h3>
+            <p class="details hidden">الزوجة: ريم عبدالكريم. الأبناء: سيف، رنا، نجلاء، حسام، خضرة، عبدالسلام.</p>
         </div>
-
-        <div class="card">
-            <h3>علي سيف أحمد</h3>
-            <p>الزوجة: فردوس عوض<br>الأبناء: شمس، ليالي، صالح، فلة، خضرة، ريماس</p>
+        <div class="card" onclick="show(this)">
+            <div class="icon">👨</div>
+            <h3>علي سيف</h3>
+            <p class="details hidden">الزوجة: فردوس عوض. الأبناء: شمس، ليالي، صالح، فلة، خضرة، ريماس.</p>
         </div>
-
-        <div class="card">
-            <h3>عبدالسلام سيف أحمد (الشهيد)</h3>
-            <p>الزوجة: سميحة<br>الأبناء: مرام، محمد</p>
+        <div class="card" onclick="show(this)">
+            <div class="icon">👨</div>
+            <h3>عبدالسلام سيف</h3>
+            <p class="details hidden">الزوجة: سميحة. الأبناء: مرام، محمد.</p>
         </div>
-
-        <div class="card">
-            <h3>فلة سيف أحمد</h3>
-            <p>الأبناء: رفيف، هديل، أسيل</p>
+        <div class="card" onclick="show(this)">
+            <div class="icon">👩</div>
+            <h3>فلة سيف</h3>
+            <p class="details hidden">الأبناء: رفيف، هديل، أسيل.</p>
         </div>
-    </main>
+    </div>
+    <button id="back" onclick="location.reload()" style="margin-top:20px; padding:10px; display:none;">إغلاق والعودة</button>
 
+    <script>
+        function show(el) {
+            document.querySelectorAll('.card').forEach(c => { if(c !== el) c.classList.add('hidden'); });
+            el.classList.add('active');
+            el.querySelector('.details').classList.remove('hidden');
+            document.getElementById('back').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
