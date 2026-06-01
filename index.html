@@ -2,54 +2,55 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>شجرة عائلة سيف أحمد الجريري</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>عائلة سيف أحمد الجريري</title>
     <style>
-        body { background: #050505; color: #fff; font-family: sans-serif; overflow: auto; }
-        .node circle { fill: #00d2ff; stroke: #fff; stroke-width: 2px; }
-        .node text { font: 12px sans-serif; fill: #fff; font-weight: bold; }
-        .link { fill: none; stroke: #555; stroke-width: 2px; }
+        body { background: #0a0a12; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
+        .card { background: #16162e; border: 2px solid #00d2ff; padding: 20px; border-radius: 15px; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: scale(1.05); border-color: #ff007f; }
+        .details { margin-top: 10px; font-size: 0.9em; color: #ccc; }
+        h3 { margin: 0; color: #00d2ff; }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center;">شجرة عائلة سيف أحمد الجريري</h1>
-    <svg id="tree" width="4000" height="2000"></svg>
-
-    <script>
-        const data = {
-            name: "سيف أحمد الجريري",
-            children: [
-                { name: "حسام سيف", children: [
-                    { name: "الزوجة الأولى (مجهولة)", children: [
-                        { name: "عائشة (متزوجة)", children: [{name: "أعيان"}, {name: "محمد"}, {name: "ايلان"}] }
-                    ]},
-                    { name: "الزوجة الثانية: إقبال محمد", children: [
-                        { name: "اليمامة (متزوجة)", children: [{name: "ايلان"}] },
-                        { name: "الهنوف"}, { name: "ميمونة"}, { name: "خضرة"}, { name: "عمار"}, { name: "شجون"}, { name: "شهد"}
-                    ]}
-                ]},
-                { name: "جلال سيف", children: [{name: "سيف"}, {name: "رنا"}, {name: "نجلاء"}, {name: "حسام"}, {name: "خضرة"}, {name: "عبدالسلام"}]},
-                { name: "علي سيف", children: [
-                    { name: "شمس (متزوجة)", children: [{name: "تركي"}, {name: "ميلا"}]},
-                    {name: "ليالي"}, {name: "صالح"}, {name: "فلة"}, {name: "خضرة"}, {name: "ريماس"}
-                ]},
-                { name: "عبدالسلام سيف (الزوجة سميحة)", children: [{name: "مرام"}, {name: "محمد"}]},
-                { name: "فلة سيف (الزوج: مجهول)", children: [{name: "رفيف"}, {name: "هديل"}, {name: "أسيل"}]}
-            ]
-        };
-
-        const svg = d3.select("#tree"), width = 4000, height = 2000;
-        const root = d3.hierarchy(data);
-        d3.tree().size([height - 200, width - 1000])(root);
-
-        svg.selectAll(".link").data(root.links()).enter().append("path").attr("class", "link")
-            .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
-
-        const node = svg.selectAll(".node").data(root.descendants()).enter().append("g")
-            .attr("transform", d => "translate(" + d.y + "," + d.x + ")");
-
-        node.append("circle").attr("r", 5);
-        node.append("text").attr("dy", 5).attr("x", 10).text(d => d.data.name);
-    </script>
+    <h1>عائلة سيف أحمد الجريري</h1>
+    <div class="grid">
+        <div class="card">
+            <h3>سيف أحمد الجريري</h3>
+            <p class="details">الجد - زوجته: خضرة صالح</p>
+        </div>
+        <div class="card">
+            <h3>حسام سيف</h3>
+            <p class="details">الزوجات: مجهولة (أم عائشة) - إقبال محمد (أم البقية). الأبناء: عائشة، اليمامة، الهنوف، ميمونة، خضرة، عمار، شجون، شهد.</p>
+        </div>
+        <div class="card">
+            <h3>عائشة حسام</h3>
+            <p class="details">زوجها: مجهول. أبناؤها: أعيان، محمد، ايلان.</p>
+        </div>
+        <div class="card">
+            <h3>اليمامة حسام</h3>
+            <p class="details">زوجها: مجهول. أبناؤها: ايلان.</p>
+        </div>
+        <div class="card">
+            <h3>جلال سيف</h3>
+            <p class="details">زوجته: ريم عبدالكريم. الأبناء: سيف، رنا، نجلاء، حسام، خضرة، عبدالسلام.</p>
+        </div>
+        <div class="card">
+            <h3>علي سيف</h3>
+            <p class="details">زوجته: فردوس عوض. الأبناء: شمس، ليالي، صالح، فلة، خضرة، ريماس.</p>
+        </div>
+        <div class="card">
+            <h3>شمس علي</h3>
+            <p class="details">زوجها: مجهول. أبناؤها: تركي، ميلا.</p>
+        </div>
+        <div class="card">
+            <h3>عبدالسلام سيف</h3>
+            <p class="details">زوجته: سميحة. الأبناء: مرام، محمد.</p>
+        </div>
+        <div class="card">
+            <h3>فلة سيف</h3>
+            <p class="details">زوجها: مجهول. الأبناء: رفيف، هديل، أسيل.</p>
+        </div>
+    </div>
 </body>
 </html>
