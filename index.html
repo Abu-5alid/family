@@ -2,58 +2,51 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <title>شجرة عائلة سيف أحمد الجريري</title>
     <style>
-        body { background: #050505; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; }
-        .card { width: 150px; padding: 15px; background: #1a1a1a; border: 2px solid #333; border-radius: 15px; cursor: pointer; text-align: center; transition: 0.4s; }
-        .card:hover { border-color: #00d2ff; transform: scale(1.05); }
-        .card.active { width: 80%; max-width: 600px; cursor: default; border-color: #ff007f; background: #222; }
+        body { background: #0a0a12; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
+        .card { background: #16162e; border: 2px solid #00d2ff; padding: 15px; border-radius: 15px; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: scale(1.05); box-shadow: 0 0 15px #00d2ff; }
+        .card.active { position: fixed; top: 5%; left: 5%; width: 90%; height: 90%; background: #1a1a2e; z-index: 100; cursor: default; }
         .hidden { display: none; }
-        .icon { font-size: 50px; margin-bottom: 10px; }
+        h2 { color: #ff007f; }
     </style>
 </head>
 <body>
     <h1>شجرة عائلة سيف أحمد الجريري</h1>
-    <div class="container" id="grid">
-        <div class="card" onclick="show(this)">
-            <div class="icon">👴</div>
-            <h3>سيف أحمد</h3>
-            <p class="details hidden">الجد المؤسس، رحمه الله. كان رمزاً للكرم والعطاء، وله مكانة كبيرة في قلوب الجميع.</p>
-        </div>
-        <div class="card" onclick="show(this)">
-            <div class="icon">👨</div>
-            <h3>حسام سيف</h3>
-            <p class="details hidden">الأبناء: عائشة، أعيان، محمد، إيلان، اليمامة، الهنوف، ميمونة، خضرة، عمار، شجون، شهد.</p>
-        </div>
-        <div class="card" onclick="show(this)">
-            <div class="icon">👨</div>
-            <h3>جلال سيف</h3>
-            <p class="details hidden">الزوجة: ريم عبدالكريم. الأبناء: سيف، رنا، نجلاء، حسام، خضرة، عبدالسلام.</p>
-        </div>
-        <div class="card" onclick="show(this)">
-            <div class="icon">👨</div>
-            <h3>علي سيف</h3>
-            <p class="details hidden">الزوجة: فردوس عوض. الأبناء: شمس، ليالي، صالح، فلة، خضرة، ريماس.</p>
-        </div>
-        <div class="card" onclick="show(this)">
-            <div class="icon">👨</div>
-            <h3>عبدالسلام سيف</h3>
-            <p class="details hidden">الزوجة: سميحة. الأبناء: مرام، محمد.</p>
-        </div>
-        <div class="card" onclick="show(this)">
-            <div class="icon">👩</div>
-            <h3>فلة سيف</h3>
-            <p class="details hidden">الأبناء: رفيف، هديل، أسيل.</p>
-        </div>
+    <div class="grid" id="container">
+        <!-- الجد -->
+        <div class="card" onclick="openCard(this)"><h3>سيف أحمد</h3><p>الجد المؤسس</p></div>
+        <!-- أبناء حسام -->
+        <div class="card" onclick="openCard(this)"><h3>عائشة حسام</h3><p>ابنة حسام</p></div>
+        <div class="card" onclick="openCard(this)"><h3>أعيان حسام</h3><p>ابنة حسام</p></div>
+        <div class="card" onclick="openCard(this)"><h3>محمد حسام</h3><p>ابن حسام</p></div>
+        <div class="card" onclick="openCard(this)"><h3>إيلان حسام</h3><p>ابن حسام</p></div>
+        <!-- أبناء جلال -->
+        <div class="card" onclick="openCard(this)"><h3>سيف جلال</h3><p>ابن جلال</p></div>
+        <div class="card" onclick="openCard(this)"><h3>رنا جلال</h3><p>ابنة جلال</p></div>
+        <div class="card" onclick="openCard(this)"><h3>نجلاء جلال</h3><p>ابنة جلال</p></div>
+        <!-- أبناء علي -->
+        <div class="card" onclick="openCard(this)"><h3>شمس علي</h3><p>ابنة علي</p></div>
+        <div class="card" onclick="openCard(this)"><h3>ليالي علي</h3><p>ابنة علي</p></div>
+        <div class="card" onclick="openCard(this)"><h3>صالح علي</h3><p>ابن علي</p></div>
+        <!-- أبناء عبدالسلام -->
+        <div class="card" onclick="openCard(this)"><h3>مرام عبدالسلام</h3><p>ابنة عبدالسلام</p></div>
+        <div class="card" onclick="openCard(this)"><h3>محمد عبدالسلام</h3><p>ابن عبدالسلام</p></div>
+        <!-- أبناء فلة -->
+        <div class="card" onclick="openCard(this)"><h3>رفيف فلة</h3><p>ابنة فلة</p></div>
+        <div class="card" onclick="openCard(this)"><h3>هديل فلة</h3><p>ابنة فلة</p></div>
     </div>
-    <button id="back" onclick="location.reload()" style="margin-top:20px; padding:10px; display:none;">إغلاق والعودة</button>
+    <button id="closeBtn" class="hidden" onclick="location.reload()" style="position:fixed; bottom:20px; right:20px; padding:15px; background:#ff007f; border:none; color:white; border-radius:10px;">إغلاق والعودة</button>
 
     <script>
-        function show(el) {
-            document.querySelectorAll('.card').forEach(c => { if(c !== el) c.classList.add('hidden'); });
+        function openCard(el) {
+            document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+            el.classList.remove('hidden');
             el.classList.add('active');
-            el.querySelector('.details').classList.remove('hidden');
-            document.getElementById('back').style.display = 'block';
+            el.innerHTML += '<div style="margin-top:20px; font-size:1.2em;">هذه بطاقة تعريفية خاصة بـ ' + el.querySelector('h3').innerText + '</div>';
+            document.getElementById('closeBtn').classList.remove('hidden');
         }
     </script>
 </body>
