@@ -2,70 +2,334 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>السجل الذهبي الشامل | عائلة سيف أحمد الجريري</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السجل الذهبي الشامل | شجرة عائلة سيف أحمد الجريري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --bg: #030303; --card: #0a0a12; --accent: #00d2ff; --text: #e0e0e0; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Tajawal', sans-serif; margin: 0; padding: 40px; }
-        .archive-header { text-align: center; padding: 80px 20px; border-bottom: 4px double var(--gold); margin-bottom: 60px; }
-        h1 { font-size: 4em; color: var(--gold); text-shadow: 0 0 50px rgba(212,175,55,0.5); }
-        .grid-system { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; }
-        .lux-container { background: var(--card); border: 1px solid #333; padding: 50px; border-radius: 40px; transition: 0.6s; }
-        .lux-container:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 0 50px rgba(212,175,55,0.2); }
-        .name-style { color: var(--gold); font-size: 2em; font-weight: 900; margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .details-style { font-size: 1.2em; line-height: 2.2; color: #ccc; }
-        .footer-tag { margin-top: 30px; font-family: monospace; color: var(--accent); font-size: 0.9em; }
+        /* =========================================
+           المتغيرات الأساسية والألوان (Theming)
+           ========================================= */
+        :root { 
+            --gold: #d4af37; 
+            --gold-light: #f3e5ab;
+            --bg-dark: #030303; 
+            --bg-card: #0a0a12; 
+            --branch-bg: rgba(15, 15, 25, 0.4);
+            --accent-cyan: #00d2ff; 
+            --accent-red: #ff3333;
+            --accent-purple: #b829ff;
+            --text-main: #e0e0e0; 
+            --text-muted: #888888;
+            --border-color: #222222;
+            --glass-bg: rgba(10, 10, 18, 0.8);
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* =========================================
+           التهيئة العامة
+           ========================================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            font-family: 'Tajawal', sans-serif; 
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+        }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+        ::selection { background: var(--gold); color: #000; }
+
+        /* =========================================
+           الرأس (Header)
+           ========================================= */
+        .archive-header { 
+            text-align: center; 
+            padding: 100px 20px; 
+            background: radial-gradient(circle at center, rgba(212,175,55,0.05) 0%, transparent 70%);
+            border-bottom: 2px solid var(--gold); 
+            margin-bottom: 60px; 
+            position: relative;
+        }
+        .archive-header h1 { 
+            font-size: 4em; color: var(--gold); 
+            text-shadow: 0 0 40px rgba(212,175,55,0.5); margin-bottom: 15px; 
+        }
+        .archive-header p { font-size: 1.5em; color: var(--text-muted); }
+
+        /* =========================================
+           هيكل الشجرة والفروع (Tree Structure)
+           ========================================= */
+        .container { max-width: 1500px; margin: 0 auto; padding: 0 20px 100px 20px; }
+        
+        /* القسم المشترك للشبكات */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; justify-content: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .grid-center { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+
+        /* حاوية الفرع العائلي */
+        .family-branch {
+            background: var(--branch-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 80px;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .branch-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed rgba(255,255,255,0.1);
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        .section-divider span {
+            background: var(--bg-dark);
+            padding: 10px 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 1.2em;
+            position: relative;
+            z-index: 2;
+        }
+        .section-divider::before {
+            content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px;
+            background: var(--border-color); z-index: 1;
+        }
+
+        /* =========================================
+           البطاقات (Cards)
+           ========================================= */
+        .lux-container { 
+            background: var(--glass-bg); border: 1px solid var(--border-color); 
+            padding: 40px; border-radius: 20px; transition: var(--transition-smooth);
+            backdrop-filter: blur(10px); position: relative;
+            width: 100%; max-width: 450px; margin: 0 auto;
+        }
+        
+        .lux-container:hover { transform: translateY(-10px); z-index: 10; box-shadow: 0 15px 30px rgba(0,0,0,0.8); }
+
+        .name-style { font-size: 1.8em; font-weight: 900; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .details-style { font-size: 1.1em; line-height: 1.8; color: #b0b0b0; }
+        .footer-tag { margin-top: 20px; font-family: monospace; font-size: 0.85em; font-weight: bold; padding: 5px 12px; border-radius: 6px; display: inline-block; background: rgba(0,0,0,0.5); }
+
+        /* الألوان حسب الرتبة */
+        .status-founder { border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 0 20px rgba(212,175,55,0.1); }
+        .status-founder .name-style { color: var(--gold); }
+        .status-founder .footer-tag { color: var(--gold); border: 1px solid var(--gold); }
+        .status-founder:hover { border-color: var(--gold); box-shadow: 0 0 40px rgba(212,175,55,0.3); }
+
+        .status-core { border-color: rgba(243, 229, 171, 0.4); }
+        .status-core .name-style { color: var(--gold-light); }
+        .status-core .footer-tag { color: var(--gold-light); border: 1px solid var(--gold-light); }
+        .status-core:hover { border-color: var(--gold-light); }
+
+        .status-member { border-color: rgba(255, 255, 255, 0.2); }
+        .status-member .name-style { color: #ffffff; }
+        .status-member .footer-tag { color: #aaaaaa; border: 1px solid #555; }
+        .status-member:hover { border-color: #ffffff; }
+
+        .status-partner { border-color: rgba(184, 41, 255, 0.3); }
+        .status-partner .name-style { color: #e6a8ff; }
+        .status-partner .footer-tag { color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+        .status-partner:hover { border-color: var(--accent-purple); }
+
+        .status-legend { border-color: rgba(255, 51, 51, 0.4); }
+        .status-legend .name-style { color: var(--accent-red); }
+        .status-legend .footer-tag { color: var(--accent-red); border: 1px solid var(--accent-red); }
+        .status-legend:hover { border-color: var(--accent-red); box-shadow: 0 0 30px rgba(255,51,51,0.2); }
+
+        .status-gen3 { border-color: rgba(0, 210, 255, 0.2); }
+        .status-gen3 .name-style { color: #80e5ff; }
+        .status-gen3 .footer-tag { color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+        .status-gen3:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(0,210,255,0.2); }
+
+        /* التجاوب (Responsive) */
+        @media (max-width: 768px) {
+            .archive-header h1 { font-size: 2.5em; }
+            .family-branch { padding: 30px 15px; }
+            .branch-title { font-size: 1.8em; }
+        }
     </style>
 </head>
 <body>
 
 <header class="archive-header">
-    <h1>الموسوعة التاريخية لعائلة سيف أحمد الجريري</h1>
+    <h1>الموسوعة التاريخية لعائلة الجريري</h1>
+    <p>التوثيق الشجري للأجيال والأصول</p>
 </header>
 
-<div class="grid-system">
+<div class="container">
 
-    <!-- الجيل المؤسس -->
-    <div class="lux-container"><div class="name-style">سيف أحمد الجريري (الجد)</div><div class="details-style">الركيزة الأساسية للعائلة، رجل المكافحة والرزانة. مدرسة في الصبر ومواجهة التحديات بقلبٍ ثابت.</div><div class="footer-tag">STATUS: FOUNDER | ID: 001</div></div>
-    <div class="lux-container"><div class="name-style">خضرة صالح ناجي (الجدة)</div><div class="details-style">شعلة النشاط والقلب الذي يجمع الجميع، حارسة الذكريات وروح العائلة النابضة بالحب والحيوية.</div><div class="footer-tag">STATUS: CORE | ID: 002</div></div>
+    <div class="family-branch" style="border-color: var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.1);">
+        <h2 class="branch-title" style="color: var(--gold);">الجذور الذهبية | الجيل المؤسس</h2>
+        <div class="grid-2">
+            <div class="lux-container status-founder">
+                <div class="name-style">سيف أحمد الجريري (الجد)</div>
+                <div class="details-style">الركيزة الأساسية للعائلة، رجل المكافحة والرزانة. مدرسة في الصبر ومواجهة التحديات بقلبٍ ثابت.</div>
+                <div class="footer-tag">STATUS: FOUNDER | ID: 001</div>
+            </div>
+            <div class="lux-container status-core">
+                <div class="name-style">خضرة صالح ناجي (الجدة)</div>
+                <div class="details-style">شعلة النشاط والقلب الذي يجمع الجميع، حارسة الذكريات وروح العائلة النابضة بالحب والحيوية.</div>
+                <div class="footer-tag">STATUS: CORE | ID: 002</div>
+            </div>
+        </div>
+    </div>
 
-    <!-- الأبناء وأزواجهم -->
-    <div class="lux-container"><div class="name-style">حسام سيف</div><div class="details-style">الاجتماعي الأول، صاحب الحضور القوي والكرم السخي، نبض العائلة في كل المحافل والمناسبات.</div><div class="footer-tag">STATUS: MEMBER | ID: 003</div></div>
-    <div class="lux-container"><div class="name-style">إقبال محمد (زوجة حسام)</div><div class="details-style">شريكة الرحلة والمستقبل، ركيزة الاستقرار في بيت حسام.</div><div class="footer-tag">STATUS: PARTNER | ID: 004</div></div>
-    <div class="lux-container"><div class="name-style">جلال سيف</div><div class="details-style">المحلل والمفكر، ذو الرزانة التي صقلتها التجارب، خبير الحكمة في مواجهة الأمور.</div><div class="footer-tag">STATUS: MEMBER | ID: 005</div></div>
-    <div class="lux-container"><div class="name-style">ريم عبدالكريم (زوجة جلال)</div><div class="details-style">شريكة النجاح والحكمة في بيت جلال.</div><div class="footer-tag">STATUS: PARTNER | ID: 006</div></div>
-    <div class="lux-container"><div class="name-style">علي سيف</div><div class="details-style">عاشق الهدوء والخصوصية، منظم الوقت بدقة، يزن الأمور بميزان الرزانة.</div><div class="footer-tag">STATUS: MEMBER | ID: 007</div></div>
-    <div class="lux-container"><div class="name-style">فردوس عوض (زوجة علي)</div><div class="details-style">رفيقة الدرب وجزء من توازن بيت علي.</div><div class="footer-tag">STATUS: PARTNER | ID: 008</div></div>
-    <div class="lux-container"><div class="name-style">عبدالسلام سيف (رحمه الله)</div><div class="details-style">الفرفوش، صاحب الفكاهة والقلب النقي، غرس التربية الصالحة في بيته.</div><div class="footer-tag">STATUS: LEGEND | ID: 009</div></div>
-    <div class="lux-container"><div class="name-style">سميحة (زوجة عبدالسلام)</div><div class="details-style">أرملة الفقيد، حافظة الإرث والبيت الكريم.</div><div class="footer-tag">STATUS: PARTNER | ID: 010</div></div>
-    <div class="lux-container"><div class="name-style">فلة سيف</div><div class="details-style">الابنة المحبوبة، مصدر الضحك والبهجة الذي لا يغيب عن الجدة.</div><div class="footer-tag">STATUS: MEMBER | ID: 011</div></div>
+    <div class="family-branch">
+        <h2 class="branch-title">عائلة حسام سيف</h2>
+        
+        <div class="grid-2">
+            <div class="lux-container status-member">
+                <div class="name-style">حسام سيف</div>
+                <div class="details-style">الاجتماعي الأول، صاحب الحضور القوي والكرم السخي، نبض العائلة في كل المحافل والمناسبات.</div>
+                <div class="footer-tag">STATUS: FATHER | ID: 003</div>
+            </div>
+            <div class="lux-container status-partner">
+                <div class="name-style">إقبال محمد</div>
+                <div class="details-style">شريكة الرحلة والمستقبل، ركيزة الاستقرار في بيت حسام.</div>
+                <div class="footer-tag">STATUS: MOTHER | ID: 004</div>
+            </div>
+        </div>
 
-    <!-- الأحفاد (تم توسيعهم لضمان الضخامة) -->
-    <div class="lux-container"><div class="name-style">عائشة حسام</div><div class="details-style">أم أعيان ومحمد وايلان، ركيزة الجيل الجديد.</div><div class="footer-tag">STATUS: GEN3 | ID: 012</div></div>
-    <div class="lux-container"><div class="name-style">اليمامة حسام</div><div class="details-style">أم ايلان، تحمل طموحاً يواكب المستقبل.</div><div class="footer-tag">STATUS: GEN3 | ID: 013</div></div>
-    <div class="lux-container"><div class="name-style">عمار حسام</div><div class="details-style">من جيل الشباب الصاعد المتميز.</div><div class="footer-tag">STATUS: GEN3 | ID: 014</div></div>
-    <div class="lux-container"><div class="name-style">سيف جلال</div><div class="details-style">يحمل اسم الجد وفخر العائلة.</div><div class="footer-tag">STATUS: GEN3 | ID: 015</div></div>
-    <div class="lux-container"><div class="name-style">شمس علي</div><div class="details-style">أم تركي وميلا، رمز للتميز الحياتي.</div><div class="footer-tag">STATUS: GEN3 | ID: 016</div></div>
-    <div class="lux-container"><div class="name-style">مرام عبدالسلام</div><div class="details-style">امتداد لسيرة والدها في الكرم.</div><div class="footer-tag">STATUS: GEN3 | ID: 017</div></div>
-    <div class="lux-container"><div class="name-style">محمد عبدالسلام</div><div class="details-style">فخر العائلة وشعلة نشاطها.</div><div class="footer-tag">STATUS: GEN3 | ID: 018</div></div>
-    <div class="lux-container"><div class="name-style">رفيف فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">STATUS: GEN3 | ID: 019</div></div>
-    <div class="lux-container"><div class="name-style">هديل فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">STATUS: GEN3 | ID: 020</div></div>
-    <div class="lux-container"><div class="name-style">أسيل فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">STATUS: GEN3 | ID: 021</div></div>
-    <div class="lux-container"><div class="name-style">الهنوف حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 022</div></div>
-    <div class="lux-container"><div class="name-style">ميمونة حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 023</div></div>
-    <div class="lux-container"><div class="name-style">خضرة حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 024</div></div>
-    <div class="lux-container"><div class="name-style">شجون حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 025</div></div>
-    <div class="lux-container"><div class="name-style">شهد حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">STATUS: GEN3 | ID: 026</div></div>
-    <div class="lux-container"><div class="name-style">رنا جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">STATUS: GEN3 | ID: 027</div></div>
-    <div class="lux-container"><div class="name-style">نجلاء جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">STATUS: GEN3 | ID: 028</div></div>
-    <div class="lux-container"><div class="name-style">حسام جلال</div><div class="details-style">من أبناء جلال الواعدين.</div><div class="footer-tag">STATUS: GEN3 | ID: 029</div></div>
-    <div class="lux-container"><div class="name-style">خضرة جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">STATUS: GEN3 | ID: 030</div></div>
-    <div class="lux-container"><div class="name-style">عبدالسلام جلال</div><div class="details-style">من أبناء جلال الواعدين.</div><div class="footer-tag">STATUS: GEN3 | ID: 031</div></div>
-    <div class="lux-container"><div class="name-style">ليالي علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 032</div></div>
-    <div class="lux-container"><div class="name-style">صالح علي</div><div class="details-style">من أبناء علي المنظمين.</div><div class="footer-tag">STATUS: GEN3 | ID: 033</div></div>
-    <div class="lux-container"><div class="name-style">فلة علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 034</div></div>
-    <div class="lux-container"><div class="name-style">خضرة علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 035</div></div>
-    <div class="lux-container"><div class="name-style">ريماس علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">STATUS: GEN3 | ID: 036</div></div>
+        <div class="section-divider"><span>الأبناء والبنات (الجيل الثالث)</span></div>
 
+        <div class="grid-3">
+            <div class="lux-container status-gen3"><div class="name-style">عائشة حسام</div><div class="details-style">أم أعيان ومحمد وايلان، ركيزة الجيل الجديد.</div><div class="footer-tag">GEN3 | ID: 012</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">اليمامة حسام</div><div class="details-style">أم ايلان، تحمل طموحاً يواكب المستقبل.</div><div class="footer-tag">GEN3 | ID: 013</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">عمار حسام</div><div class="details-style">من جيل الشباب الصاعد المتميز.</div><div class="footer-tag">GEN3 | ID: 014</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">الهنوف حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">GEN3 | ID: 022</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">ميمونة حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">GEN3 | ID: 023</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">خضرة حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">GEN3 | ID: 024</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">شجون حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">GEN3 | ID: 025</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">شهد حسام</div><div class="details-style">من بنات حسام البارزات.</div><div class="footer-tag">GEN3 | ID: 026</div></div>
+        </div>
+    </div>
+
+    <div class="family-branch">
+        <h2 class="branch-title">عائلة جلال سيف</h2>
+        
+        <div class="grid-2">
+            <div class="lux-container status-member">
+                <div class="name-style">جلال سيف</div>
+                <div class="details-style">المحلل والمفكر، ذو الرزانة التي صقلتها التجارب، خبير الحكمة في مواجهة الأمور.</div>
+                <div class="footer-tag">STATUS: FATHER | ID: 005</div>
+            </div>
+            <div class="lux-container status-partner">
+                <div class="name-style">ريم عبدالكريم</div>
+                <div class="details-style">شريكة النجاح والحكمة في بيت جلال.</div>
+                <div class="footer-tag">STATUS: MOTHER | ID: 006</div>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>الأبناء والبنات (الجيل الثالث)</span></div>
+
+        <div class="grid-3">
+            <div class="lux-container status-gen3"><div class="name-style">سيف جلال</div><div class="details-style">يحمل اسم الجد وفخر العائلة.</div><div class="footer-tag">GEN3 | ID: 015</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">رنا جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">GEN3 | ID: 027</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">نجلاء جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">GEN3 | ID: 028</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">حسام جلال</div><div class="details-style">من أبناء جلال الواعدين.</div><div class="footer-tag">GEN3 | ID: 029</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">خضرة جلال</div><div class="details-style">من بنات جلال الطموحات.</div><div class="footer-tag">GEN3 | ID: 030</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">عبدالسلام جلال</div><div class="details-style">من أبناء جلال الواعدين.</div><div class="footer-tag">GEN3 | ID: 031</div></div>
+        </div>
+    </div>
+
+    <div class="family-branch">
+        <h2 class="branch-title">عائلة علي سيف</h2>
+        
+        <div class="grid-2">
+            <div class="lux-container status-member">
+                <div class="name-style">علي سيف</div>
+                <div class="details-style">عاشق الهدوء والخصوصية، منظم الوقت بدقة، يزن الأمور بميزان الرزانة.</div>
+                <div class="footer-tag">STATUS: FATHER | ID: 007</div>
+            </div>
+            <div class="lux-container status-partner">
+                <div class="name-style">فردوس عوض</div>
+                <div class="details-style">رفيقة الدرب وجزء من توازن بيت علي.</div>
+                <div class="footer-tag">STATUS: MOTHER | ID: 008</div>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>الأبناء والبنات (الجيل الثالث)</span></div>
+
+        <div class="grid-3">
+            <div class="lux-container status-gen3"><div class="name-style">شمس علي</div><div class="details-style">أم تركي وميلا، رمز للتميز الحياتي.</div><div class="footer-tag">GEN3 | ID: 016</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">ليالي علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">GEN3 | ID: 032</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">صالح علي</div><div class="details-style">من أبناء علي المنظمين.</div><div class="footer-tag">GEN3 | ID: 033</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">فلة علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">GEN3 | ID: 034</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">خضرة علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">GEN3 | ID: 035</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">ريماس علي</div><div class="details-style">من بنات علي الهادئات.</div><div class="footer-tag">GEN3 | ID: 036</div></div>
+        </div>
+    </div>
+
+    <div class="family-branch" style="border-color: rgba(255, 51, 51, 0.3);">
+        <h2 class="branch-title">عائلة عبدالسلام سيف</h2>
+        
+        <div class="grid-2">
+            <div class="lux-container status-legend">
+                <div class="name-style">عبدالسلام سيف (رحمه الله)</div>
+                <div class="details-style">الفرفوش، صاحب الفكاهة والقلب النقي، غرس التربية الصالحة في بيته.</div>
+                <div class="footer-tag">STATUS: FATHER | ID: 009</div>
+            </div>
+            <div class="lux-container status-partner">
+                <div class="name-style">سميحة</div>
+                <div class="details-style">أرملة الفقيد، حافظة الإرث والبيت الكريم.</div>
+                <div class="footer-tag">STATUS: MOTHER | ID: 010</div>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>الأبناء والبنات (الجيل الثالث)</span></div>
+
+        <div class="grid-center">
+            <div class="lux-container status-gen3"><div class="name-style">مرام عبدالسلام</div><div class="details-style">امتداد لسيرة والدها في الكرم.</div><div class="footer-tag">GEN3 | ID: 017</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">محمد عبدالسلام</div><div class="details-style">فخر العائلة وشعلة نشاطها.</div><div class="footer-tag">GEN3 | ID: 018</div></div>
+        </div>
+    </div>
+
+    <div class="family-branch">
+        <h2 class="branch-title">عائلة فلة سيف</h2>
+        
+        <div class="grid-center">
+            <div class="lux-container status-member">
+                <div class="name-style">فلة سيف</div>
+                <div class="details-style">الابنة المحبوبة، مصدر الضحك والبهجة الذي لا يغيب عن الجدة.</div>
+                <div class="footer-tag">STATUS: MOTHER | ID: 011</div>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>الأبناء والبنات (الجيل الثالث)</span></div>
+
+        <div class="grid-3">
+            <div class="lux-container status-gen3"><div class="name-style">رفيف فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">GEN3 | ID: 019</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">هديل فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">GEN3 | ID: 020</div></div>
+            <div class="lux-container status-gen3"><div class="name-style">أسيل فلة</div><div class="details-style">من الجيل البهيج الواعد.</div><div class="footer-tag">GEN3 | ID: 021</div></div>
+        </div>
+    </div>
+
+</div>
+
+<div style="text-align: center; padding: 40px; border-top: 1px solid #222; color: #555;">
+    السجل الرقمي الموثق لعائلة سيف أحمد الجريري &copy; 2026
 </div>
 
 </body>
